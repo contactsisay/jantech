@@ -78,4 +78,17 @@ class Common extends Model
             }
         }
     }
+
+    public static function getWeekDays()
+    {
+        $week_days = "<option value='0' disabled>Select Weekday</option>";
+            $week_days .= "<option value='1'>Monday</option>";
+            $week_days .= "<option value='2'>Tuesday</option>";
+            $week_days .= "<option value='3'>Wednsday</option>";
+            $week_days .= "<option value='4'>Thursday</option>";
+            $week_days .= "<option value='5'>Friday</option>";
+            $week_days .= "<option value='6'>Saturday</option>";
+            $week_days .= "<option value='7'>Sunday</option>";            
+        return $week_days;
+    }
 }

@@ -13,7 +13,7 @@
             </div>
             <div class="col-md-3">
                 <label>Allowed Days:</label><br/>
-                <input type="text" name="allowed_days" class="form-control" required/>
+                <input type="text" placeholder="Empty means not applicable" name="allowed_days" class="form-control" required/>
             </div>
             <div class="col-md-6" style='padding-top:35px;'>
                 <input type="checkbox" name="is_annual"/>&nbsp;&nbsp;<label>Is Annual?:</label>&nbsp;&nbsp;&nbsp;&nbsp;

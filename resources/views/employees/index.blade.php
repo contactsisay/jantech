@@ -48,8 +48,18 @@
                 <td>{{ $item->job_position_id }}</td>
                 <td>{{ $item->employment_date }}</td>
                 <td>
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-flat btn-dark dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Settings
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-bottom">
+                      <a href="{{ url('/employee_leaves/index',$item->id) }}" type="button" class="btn btn-sm">Manage Leaves</a>
+                      <a href="{{ url('/employee_offdays/index',$item->id) }}" type="button" class="btn btn-sm">Manage Offdays</a>
+                      <a href="{{ url('/employee_attendances/index',$item->id) }}" type="button" class="btn btn-sm">Manage Attendances</a>
+                    </div>
+                  </div>
+
                     <div class="btn-group" role="group" aria-label="Basic Example">
-                      <a href="{{ url('/employee_leaves/index',$item->id) }}" type="button" class="btn btn-flat btn-md btn-dark">Manage Leaves</a>
                         <a href="{{ url('/employees/detail',$item->id) }}" type="button" class="btn btn-flat btn-md btn-info">Detail</a>
                         <a href="{{ url('/employees/edit',$item->id) }}" type="button" class="btn btn-flat  btn-md btn-warning">Edit</a>
                         <a href="{{ url('/employees/delete',$item->id) }}" type="button" class="btn btn-flat  btn-md btn-danger">Delete</a>

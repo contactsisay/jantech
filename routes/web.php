@@ -13,6 +13,8 @@ use App\Http\Controllers\LeaveSettingController;
 use App\Http\Controllers\LeaveTypeController;
 use App\Http\Controllers\EmployeeLeaveController;
 use App\Http\Controllers\EmployeeLeaveBalanceController;
+use App\Http\Controllers\EmployeeOffdayController;
+use App\Http\Controllers\EmployeeAttendanceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -135,4 +137,22 @@ Route::group(['middleware' => 'auth'], function(){
     Route::post('/employee_leave_balances/editPost', [EmployeeLeaveBalanceController::class, 'editPost']);
     Route::get('/employee_leave_balances/delete/{id}', [EmployeeLeaveBalanceController::class, 'delete']);
     Route::post('/employee_leave_balances/deletePost', [EmployeeLeaveBalanceController::class, 'deletePost']);
+
+    Route::get('/employee_offdays/index/{id}', [EmployeeOffdayController::class, 'index']);
+    Route::get('/employee_offdays/detail/{id}', [EmployeeOffdayController::class, 'detail']);
+    Route::get('/employee_offdays/create/{id}', [EmployeeOffdayController::class, 'create']);
+    Route::post('/employee_offdays/createPost', [EmployeeOffdayController::class, 'createPost']);
+    Route::get('/employee_offdays/edit/{id}', [EmployeeOffdayController::class, 'edit']);
+    Route::post('/employee_offdays/editPost', [EmployeeOffdayController::class, 'editPost']);
+    Route::get('/employee_offdays/delete/{id}', [EmployeeOffdayController::class, 'delete']);
+    Route::post('/employee_offdays/deletePost', [EmployeeOffdayController::class, 'deletePost']);
+
+    Route::get('/employee_attendances/index/{id}', [EmployeeAttendanceController::class, 'index']);
+    Route::get('/employee_attendances/detail/{id}', [EmployeeAttendanceController::class, 'detail']);
+    Route::get('/employee_attendances/create/{id}', [EmployeeAttendanceController::class, 'create']);
+    Route::post('/employee_attendances/createPost', [EmployeeAttendanceController::class, 'createPost']);
+    Route::get('/employee_attendances/edit/{id}', [EmployeeAttendanceController::class, 'edit']);
+    Route::post('/employee_attendances/editPost', [EmployeeAttendanceController::class, 'editPost']);
+    Route::get('/employee_attendances/delete/{id}', [EmployeeAttendanceController::class, 'delete']);
+    Route::post('/employee_attendances/deletePost', [EmployeeAttendanceController::class, 'deletePost']);
 });
