@@ -5,7 +5,7 @@
 <div class="register-box">
     <div class="card card-outline card-navy">
       <div class="card-header text-center">
-        <a href="{{ route('register') }}" class="h1"><b>AQ</b>HR</a>
+        <a href="{{ route('register') }}" class="h1"><b>AQ</b> System</a>
       </div>
       <div class="card-body">
         <p class="login-box-msg">Create an Account</p>
@@ -55,7 +55,7 @@
           </div>
           <div class="row">
             <div class="col-12">
-              <button type="submit" class="btn btn-primary btn-block">Register</button>
+              <button type="submit" class="btn btn-info btn-block">Register</button>
             </div>
             <!-- /.col -->
           </div>

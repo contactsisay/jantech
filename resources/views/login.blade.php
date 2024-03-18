@@ -4,9 +4,9 @@
 
 <div class="login-box">
     <!-- /.login-logo -->
-    <div class="card card-outline card-primary">
+    <div class="card card-outline card-navy">
       <div class="card-header text-center">
-        <a href="index2.html" class="h1"><b>AQ</b>HR</a>
+        <a href="index2.html" class="h1"><b>AQ</b> System</a>
       </div>
       <div class="card-body">
         <p class="login-box-msg">Sign In</p>
@@ -44,7 +44,7 @@
             </div>
             <!-- /.col -->
             <div class="col-4">
-              <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+              <button type="submit" class="btn btn-lg btn-flat btn-info">Sign In</button>
             </div>
             <!-- /.col -->
           </div>
