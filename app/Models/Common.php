@@ -44,6 +44,7 @@ class Common extends Model
                         $yearly_leave_balance += round($days_difference*(21/365.0));
                         //echo "Year: (From: ".$employment_date." to ".$today.")".$i." => ".$days_difference.", Balance: ".$yearly_leave_balance."<br/>";
                         
+                        $future_year = date('Y-m-d', strtotime('+1 year', strtotime($employment_date)) );
                         $employee_leave_balance = new EmployeeLeaveBalance();
                         $employee_leave_balance->employee_id= $employee->id;
                         $employee_leave_balance->year = $i;
@@ -90,5 +91,10 @@ class Common extends Model
             $week_days .= "<option value='6'>Saturday</option>";
             $week_days .= "<option value='7'>Sunday</option>";            
         return $week_days;
+    }
+
+    public static function formatDate($date)
+    {
+        return date('Y-m-d',strtotime($date));
     }
 }

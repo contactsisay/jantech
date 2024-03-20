@@ -52,7 +52,7 @@
                 <td>{{ $loop->iteration }} </td>
                 <td>{{ $employee->first_name.' '.$employee->middle_name }}</td>
                 <td>{{ $item->weekday }}</td>
-                <td>{{ $item->expiry_date }}</td>
+                <td>{{ App\Models\Common::formatDate( $item->expiry_date) }}</td>
                 <td>
                     <div class="btn-group" role="group" aria-label="Basic Example">
                         <a href="{{ url('/employee_offdays/detail',$item->id) }}" type="button" class="btn btn-flat btn-md btn-info">Detail</a>

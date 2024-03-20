@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('given_date');
             $table->string('return_date');//calculated field
             $table->string('file_path')->nullable();//any attachment
+            $table->integer('updated_by');
 
             $table->foreign('employee_id')->references('id')->on('employees')->onDelete('cascade');
             $table->foreign('leave_type_id')->references('id')->on('leave_types')->onDelete('cascade');

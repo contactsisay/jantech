@@ -11,12 +11,14 @@ class EmployeeAttendance extends Model
 
     protected $fillable = [
         'employee_id',
-        'absent_date',
-        'absence_reason',
-        'file_path'
+        'start',
+        'start_break',
+        'end_break',
+        'end',
+        'attendance_date'
     ];
 
     protected $casts = [
-        'absent_date' => 'datetime',
+        'attendance_date' => 'datetime',
     ];
 }

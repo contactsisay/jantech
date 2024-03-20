@@ -2,7 +2,7 @@
 
 @section('module_content')
 
-    <h2>Employee Absenteeism List</h2>
+    <h2>Employee Attendances List</h2>
 
     @if(Session::has('success'))
       <div class="alert alert-success" role="alert">
@@ -33,7 +33,7 @@
       <div class="col-12">&nbsp;</div>
     </div>
 
-    <a href="{{ url('/employee_attendances/create',$employee->id) }}" class="btn btn-sm btn-info">Create New Absenteism</a>&nbsp;&nbsp;&nbsp;&nbsp;
+    <a href="{{ url('/employee_attendances/create',$employee->id) }}" class="btn btn-sm btn-info">Create New Attendance</a>&nbsp;&nbsp;&nbsp;&nbsp;
     <div style="height:10px;">&nbsp;</div>
     
     <table id="example1" class="table table-sm table-bordered table-hover table-striped">
@@ -41,9 +41,11 @@
             <tr>
                 <th>#</th>
                 <th>FULL NAME</th>
-                <th>ABSENT DATE</th>
-                <th>ABSENCE REASON</th>
-                <th>FILE (DOCUMENT)</th>
+                <th>ATTENDANCE DATE</th>
+                <th>START</th>
+                <th>START BREAK</th>
+                <th>END BREAK</th>
+                <th>END</th>
                 <th>ACTION</th>
             </tr>
         </thead>
@@ -52,9 +54,11 @@
             <tr>
                 <td>{{ $loop->iteration }} </td>
                 <td>{{ $employee->first_name.' '.$employee->middle_name }}</td>
-                <td>{{ $item->absent_date }}</td>
-                <td>{{ $item->absence_reason }}</td>
-                <td>{{ $item->file_path }}</td>
+                <td>{{ $item->attendance_date }}</td>
+                <td>{{ $item->start }}</td>
+                <td>{{ $item->start_break }}</td>
+                <td>{{ $item->end_break }}</td>
+                <td>{{ $item->end }}</td>
                 <td>
                     <div class="btn-group" role="group" aria-label="Basic Example">
                         <a href="{{ url('/employee_attendances/detail',$item->id) }}" type="button" class="btn btn-flat btn-md btn-info">Detail</a>
@@ -67,14 +71,17 @@
         
         </tbody>
         <tfoot>
-          <tr>
-            <th>#</th>
-            <th>FULL NAME</th>
-            <th>ABSENT DATE</th>
-            <th>ABSENCE REASON</th>
-            <th>FILE (DOCUMENT)</th>
-            <th>ACTION</th>
-        </tr>
+            <tr>
+              <th>#</th>
+              <th>FULL NAME</th>
+              <th>ATTENDANCE DATE</th>
+              <th>START</th>
+              <th>START BREAK</th>
+              <th>END BREAK</th>
+              <th>END</th>
+              <th>ACTION</th>
+          </tr>
+        </tfoot>
 </table>
 
 @endsection

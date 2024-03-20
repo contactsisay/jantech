@@ -11,13 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('employee_attendances', function (Blueprint $table) {
+        Schema::create('individual_working_times', function (Blueprint $table) {
+            $table->id();
             $table->unsignedBigInteger('employee_id');
-            $table->time("start");
+            $table->time('start');
             $table->time('start_break');
             $table->time('end_break');
             $table->time('end');
-            $table->string('attendance_date');
+            $table->string('from_date');
+            $table->string('to_date');
 
             $table->foreign('employee_id')->references('id')->on('employees')->onDelete('cascade');
             $table->timestamps();
@@ -29,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('employee_attendances');
+        Schema::dropIfExists('individual_working_times');
     }
 };

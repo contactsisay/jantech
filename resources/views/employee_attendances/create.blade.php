@@ -13,16 +13,30 @@
                 <input type="text" disabled="disabled" name="employee_name" value="{{$employee->first_name.' '.$employee->middle_name}}" class="form-control"/>
             </div>
             <div class="col-md-3">
-                <label>Absent Date:</label><br/>
-                <input type="date" name="absent_date" class="form-control" required/>
+                <label>Attendance Date:</label><br/>
+                <input type="date" name="attendance_date" class="form-control" value="<?php echo date('Y-m-d') ?>"/>
+            </div>
+        </div>
+        <div style="height:10px;">&nbsp;</div>
+        <div class="row">
+            <div class="col-md-3">
+                <label>Start:</label><br/>
+                <input type="time" name="start" class="form-control" required/>
             </div>
             <div class="col-md-3">
-                <label>Absence Reason:</label><br/>
-                <input type="text" name="absence_reason" class="form-control" required/>
+                <label>Start Break:</label><br/>
+                <input type="time" name="start_break" class="form-control" required/>
+            </div>
+        </div>
+        <div style="height:10px;">&nbsp;</div>
+        <div class="row">
+            <div class="col-md-3">
+                <label>End Break:</label><br/>
+                <input type="time" name="end_break" class="form-control" required/>
             </div>
             <div class="col-md-3">
-                <label>Atteach Document:</label><br/>
-                <input type="file" name="file_path" class="form-control"/>
+                <label>End:</label><br/>
+                <input type="time" name="end" class="form-control" required/>
             </div>
         </div>
         <div style="height:10px;">&nbsp;</div>

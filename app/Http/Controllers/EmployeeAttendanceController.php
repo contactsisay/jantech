@@ -30,16 +30,18 @@ class EmployeeAttendanceController extends Controller
     public function createPost(Request $request){
         $employee_attendance = new EmployeeAttendance();
         $employee_attendance->employee_id = $request->employee_id;
-        $employee_attendance->absent_date = $request->absent_date;
-        $employee_attendance->absence_reason = $request->absence_reason;
-        $employee_attendance->file_path = $request->file_path;
+        $employee_attendance->start = $request->start;
+        $employee_attendance->start_break = $request->start_break;
+        $employee_attendance->end_break = $request->end_break;
+        $employee_attendance->end = $request->end;
+        $employee_attendance->attendance_date = $request->attendance_date;
         $employee_id  = $request->employee_id;
 
         $pass =  $employee_attendance->save();
         
         if($pass > 0){
             return redirect('/employee_attendances/index/'.$employee_id)->with('success','Employee Attendance created successfully');
-        }else{            
+        } else {            
             return back()->with('error','Employee Attendance is not created!');
         }
     }

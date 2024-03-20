@@ -9,6 +9,7 @@ use App\Models\LeaveType;
 use App\Models\EmployeeLeaveBalance;
 use App\Models\Common;
 use Carbon\Carbon;
+use Auth;
 
 class EmployeeLeaveController extends Controller
 {    
@@ -51,18 +52,17 @@ class EmployeeLeaveController extends Controller
         $fr_raw = $request->from_year;
         $tokens = explode('(',$fr_raw);
         $employee_leave->from_year = $tokens[0];
-        $employee_leave->given_days = $request->given_days;
+        $given_days = (int)$request->given_days;
+        $employee_leave->given_days = $given_days;
         $employee_leave->effective_date = $request->effective_date;        
         $employee_leave->given_date = $request->given_date;
-        
-        $currentDateTime = Carbon::now();
-        $return_date = Carbon::now()->addDays($request->given_days);
-
+        $employee_leave->updated_by = Auth::user()->id;
+        $from_date = $request->effective_date;
+        $return_date = Carbon::parse($from_date)->addDays($given_days);
         $employee_leave->return_date = $return_date;
         $employee_leave->file_path = $request->file_path;
         $employee_id  = $request->employee_id;
-        $given_days = $request->given_days;
-
+        
         $pass =  $employee_leave->save();
         
         if($pass > 0){
@@ -92,17 +92,23 @@ class EmployeeLeaveController extends Controller
 
     public function editPost(Request $request){
         $employee_leave = EmployeeLeave::find($request->id);
+        $employee_leave = new EmployeeLeave();
         $employee_leave->employee_id = $request->employee_id;
         $employee_leave->leave_type_id = $request->leave_type_id;
         $fr_raw = $request->from_year;
         $tokens = explode('(',$fr_raw);
         $employee_leave->from_year = $tokens[0];
-        $employee_leave->given_days = $request->given_days;
+        $given_days = (int)$request->given_days;
+        $employee_leave->given_days = $given_days;
         $employee_leave->effective_date = $request->effective_date;        
         $employee_leave->given_date = $request->given_date;
-        $employee_leave->return_date = date("Y-m-d", strtotime('+ '.$request->given_days , strtotime($request->effective_date)));//$request->return_date;
+        $employee_leave->updated_by = Auth::user()->id;
+        $from_date = $request->effective_date;
+        $return_date = Carbon::parse($from_date)->addDays($given_days);
+        $employee_leave->return_date = $return_date;
         $employee_leave->file_path = $request->file_path;
-
+        $employee_id  = $request->employee_id;
+        
         $pass =  $employee_leave->save();
 
         if($pass > 0){

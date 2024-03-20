@@ -31,7 +31,7 @@
             </div>
             <div class="col-md-3">
                 <label>Given Days:</label><br/>
-                <input type="text" name="given_days" class="form-control" required/>
+                <input type="number" name="given_days" class="form-control" required/>
             </div>
         </div>
         <div style="height:10px;">&nbsp;</div>

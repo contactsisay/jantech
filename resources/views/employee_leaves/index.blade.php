@@ -59,9 +59,9 @@
                 <td>{{ $item->leave_type_id }}</td>
                 <td>{{ $item->from_year }}</td>
                 <td>{{ $item->given_days }}</td>
-                <td>{{ $item->given_date }}</td>
-                <td>{{ $item->effective_date }}</td>
-                <td>{{ $item->return_date }}</td>
+                <td>{{ App\Models\Common::formatDate($item->given_date) }}</td>
+                <td>{{ App\Models\Common::formatDate($item->effective_date) }}</td>
+                <td>{{ App\Models\Common::formatDate($item->return_date) }}</td>
                 <td>
                     <div class="btn-group" role="group" aria-label="Basic Example">
                         <a href="{{ url('/employee_leaves/detail',$item->id) }}" type="button" class="btn btn-flat btn-md btn-info">Detail</a>

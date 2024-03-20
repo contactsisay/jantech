@@ -45,8 +45,8 @@
                 <td>{{ $item->middle_name }}</td>
                 <td>{{ $item->last_name }}</td>
                 <td>{{ $item->gender }}</td>
-                <td>{{ $item->job_position_id }}</td>
-                <td>{{ $item->employment_date }}</td>
+                <td>{{ App\Models\JobPosition::findOrFail($item->job_position_id)->name}}</td>
+                <td>{{ App\Models\Common::formatDate($item->employment_date) }}</td>
                 <td>
                   <div class="btn-group">
                     <button type="button" class="btn btn-flat btn-dark dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
