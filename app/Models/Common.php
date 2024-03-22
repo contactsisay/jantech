@@ -36,44 +36,59 @@ class Common extends Model
                 $last_year_date = $employment_date;
                 $yearly_leave_balance = 18;
 
-                for($i=$employment_year;$i<=($employment_year+$all_years);$i++)
-                {     
-                    if($i==$this_year)
+                if($employment_year == $this_year)
+                {
+                    $employee_leave_balance = new EmployeeLeaveBalance();
+                    $employee_leave_balance->employee_id = $employee->id;
+                    $employee_leave_balance->year = $this_year;
+                    $employee_leave_balance->initial_balance = $yearly_leave_balance;
+                    $employee_leave_balance->total_taken = 0;
+                    $employee_leave_balance->left_balance = $yearly_leave_balance;
+                    $employee_leave_balance->expiry_date = $future_year;
+
+                    $employee_leave_balance->save();
+                }
+                else
+                {                    
+                    for($i=$employment_year;$i<=($employment_year+$all_years);$i++)
                     {
-                        $days_difference = Common::dateDiffInDays($today, $employment_date);
-                        $yearly_leave_balance += round($days_difference*(21/365.0));
-                        //echo "Year: (From: ".$employment_date." to ".$today.")".$i." => ".$days_difference.", Balance: ".$yearly_leave_balance."<br/>";
-                        
-                        $future_year = date('Y-m-d', strtotime('+1 year', strtotime($employment_date)) );
-                        $employee_leave_balance = new EmployeeLeaveBalance();
-                        $employee_leave_balance->employee_id= $employee->id;
-                        $employee_leave_balance->year = $i;
-                        $employee_leave_balance->initial_balance = $yearly_leave_balance;
-                        $employee_leave_balance->total_taken = 0;
-                        $employee_leave_balance->left_balance = $yearly_leave_balance;
-                        $employee_leave_balance->expiry_date = $future_year;
+                        if($i==$this_year)
+                        {
+                            $days_difference = Common::dateDiffInDays($today, $employment_date);
+                            $yearly_leave_balance += round($days_difference*(21/365.0));
+                            //echo "Year: (From: ".$employment_date." to ".$today.")".$i." => ".$days_difference.", Balance: ".$yearly_leave_balance."<br/>";
+                            
+                            $future_year = date('Y-m-d', strtotime('+1 year', strtotime($employment_date)) );
+                            $employee_leave_balance = new EmployeeLeaveBalance();
+                            $employee_leave_balance->employee_id= $employee->id;
+                            $employee_leave_balance->year = $i;
+                            $employee_leave_balance->initial_balance = $yearly_leave_balance;
+                            $employee_leave_balance->total_taken = 0;
+                            $employee_leave_balance->left_balance = $yearly_leave_balance;
+                            $employee_leave_balance->expiry_date = $future_year;
 
-                        $employee_leave_balance->save();
-                    }
-                    else
-                    {
-                        $future_year = date('Y-m-d', strtotime('+1 year', strtotime($employment_date)) );
-                        $days_difference = Common::dateDiffInDays($future_year, $employment_date);
-                        //$yearly_leave_balance = round($days_difference*(21/365.0))+1;
-                        //echo "Year: (From: ".$employment_date." to ".$future_year.")".$i." => ".$days_difference.", Balance: ".$yearly_leave_balance."<br/>";
-                                            
-                        $employee_leave_balance = new EmployeeLeaveBalance();
-                        $employee_leave_balance->employee_id= $employee->id;
-                        $employee_leave_balance->year = $i;
-                        $employee_leave_balance->initial_balance = $yearly_leave_balance;
-                        $employee_leave_balance->total_taken = 0;
-                        $employee_leave_balance->left_balance = $yearly_leave_balance;
-                        $employee_leave_balance->expiry_date = $future_year;
+                            $employee_leave_balance->save();
+                        }
+                        else
+                        {
+                            $future_year = date('Y-m-d', strtotime('+1 year', strtotime($employment_date)) );
+                            $days_difference = Common::dateDiffInDays($future_year, $employment_date);
+                            //$yearly_leave_balance = round($days_difference*(21/365.0))+1;
+                            //echo "Year: (From: ".$employment_date." to ".$future_year.")".$i." => ".$days_difference.", Balance: ".$yearly_leave_balance."<br/>";
+                                                
+                            $employee_leave_balance = new EmployeeLeaveBalance();
+                            $employee_leave_balance->employee_id= $employee->id;
+                            $employee_leave_balance->year = $i;
+                            $employee_leave_balance->initial_balance = $yearly_leave_balance;
+                            $employee_leave_balance->total_taken = 0;
+                            $employee_leave_balance->left_balance = $yearly_leave_balance;
+                            $employee_leave_balance->expiry_date = $future_year;
 
-                        $employee_leave_balance->save();
+                            $employee_leave_balance->save();
 
-                        $employment_date = $future_year;
-                        $yearly_leave_balance +=1;
+                            $employment_date = $future_year;
+                            $yearly_leave_balance +=1;
+                        }
                     }
                 }
             }

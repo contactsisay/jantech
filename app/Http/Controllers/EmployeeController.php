@@ -46,7 +46,7 @@ class EmployeeController extends Controller
             //create if there is no record
             $employee->save();
             return redirect('/employees')->with('success','Employee created successfully');
-        }else{            
+        }else{ 
             return back()->with('error','Employee is not created! Name is already added');
         }
     }
